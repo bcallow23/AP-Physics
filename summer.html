@@ -99,6 +99,11 @@
   a.card h3{font-size:1.02rem;font-weight:600;margin-bottom:2px}
   a.card p{font-size:.9rem;color:var(--ink-soft);margin:0}
   a.card .arrow{margin-left:auto;color:var(--teal);font-family:"IBM Plex Mono",monospace;flex:none}
+  .card.cardcol{align-items:flex-start;cursor:default}
+  .skilllinks{display:grid;gap:7px}
+  .skilllinks a{color:var(--teal-deep);font-weight:600;text-decoration:none;font-size:.95rem;
+    border-bottom:1px solid transparent;width:fit-content;transition:border-color .15s}
+  .skilllinks a:hover{border-color:var(--teal)}
 
   /* ---- quiz ---- */
   .quiz{margin-top:26px;background:var(--paper-2);border:1px solid var(--line);border-radius:16px;
@@ -265,11 +270,19 @@
 
     <p style="margin-top:26px">Use these free resources to brush up &mdash; the self&#8209;check above tells you which ones to prioritize:</p>
     <div class="res">
-      <a class="card" href="https://www.khanacademy.org/math/algebra" target="_blank" rel="noopener">
+      <div class="card cardcol">
         <span class="rk free">FREE</span>
-        <div><h3>Khan Academy &mdash; Algebra &amp; Trigonometry</h3><p>Solving and rearranging equations, exponents, and right-triangle trig. Khan is the College Board's official AP practice partner.</p></div>
-        <span class="arrow">&rarr;</span>
-      </a>
+        <div style="flex:1">
+          <h3>Khan Academy &mdash; jump straight to a skill</h3>
+          <p style="margin-bottom:10px">The College Board's official AP practice partner. Go right to the topic you need:</p>
+          <div class="skilllinks">
+            <a href="https://www.khanacademy.org/search?page_search_query=solving%20for%20a%20variable" target="_blank" rel="noopener">Rearranging &amp; solving equations &rarr;</a>
+            <a href="https://www.khanacademy.org/search?page_search_query=scientific%20notation" target="_blank" rel="noopener">Exponents &amp; scientific notation &rarr;</a>
+            <a href="https://www.khanacademy.org/search?page_search_query=adding%20fractions" target="_blank" rel="noopener">Fractions &rarr;</a>
+            <a href="https://www.khanacademy.org/search?page_search_query=right%20triangle%20trigonometry" target="_blank" rel="noopener">Right-triangle trig (SOH-CAH-TOA) &rarr;</a>
+          </div>
+        </div>
+      </div>
       <a class="card" href="https://www.physicsclassroom.com/morehelp/graphs" target="_blank" rel="noopener">
         <span class="rk free">FREE</span>
         <div><h3>The Physics Classroom &mdash; Calc Pad &amp; Graphing</h3><p>Teacher-built practice with equations and graph reading. Great low-pressure drills.</p></div>
@@ -335,10 +348,10 @@
   (function(){
     var ANSWERS = [0,1,2,3,1,2]; // correct option index for q0..q5
     var AREA_LABELS = {
-      algebra: { name: "Rearranging equations", link: "https://www.khanacademy.org/math/algebra" },
-      notation: { name: "Exponents & scientific notation", link: "https://www.aplusphysics.com/courses/honors/intro/math_review.html" },
-      fractions: { name: "Fractions & ratios", link: "https://www.khanacademy.org/math/arithmetic" },
-      trig: { name: "Right-triangle trig", link: "https://www.khanacademy.org/math/trigonometry" }
+      algebra: { name: "Rearranging & solving equations", link: "https://www.khanacademy.org/search?page_search_query=solving%20for%20a%20variable" },
+      notation: { name: "Exponents & scientific notation", link: "https://www.khanacademy.org/search?page_search_query=scientific%20notation" },
+      fractions: { name: "Fractions & ratios", link: "https://www.khanacademy.org/search?page_search_query=adding%20fractions" },
+      trig: { name: "Right-triangle trig", link: "https://www.khanacademy.org/search?page_search_query=right%20triangle%20trigonometry" }
     };
     var qs = Array.prototype.slice.call(document.querySelectorAll('.q'));
     var resultEl = document.getElementById('result');
