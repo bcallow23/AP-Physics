@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AP Physics 1 — Summer Pre-Work</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'$$',right:'$$',display:true}],throwOnError:false});"></script>
+<style>
+  :root{
+    --ink:#14263b;
+    --ink-soft:#3d5168;
+    --paper:#f7f3e9;
+    --paper-2:#fffdf7;
+    --teal:#1d6f6a;
+    --teal-deep:#13514d;
+    --rust:#c1592a;
+    --line:#d8d0bd;
+    --grid:rgba(20,38,59,0.05);
+    --shadow:0 1px 0 rgba(20,38,59,.04), 0 18px 40px -28px rgba(20,38,59,.45);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"IBM Plex Sans",sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    background-image:
+      linear-gradient(var(--grid) 1px,transparent 1px),
+      linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+    background-size:26px 26px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 22px 90px}
+  mono,.mono{font-family:"IBM Plex Mono",monospace}
+
+  /* ---- hero ---- */
+  header{padding:64px 0 40px;border-bottom:2px solid var(--ink)}
+  .kicker{
+    font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--teal-deep);font-weight:500;
+    display:inline-block;padding-bottom:14px;
+    animation:rise .7s ease both}
+  h1{
+    font-family:"Fraunces",serif;font-weight:800;font-size:clamp(2.5rem,7vw,4.1rem);
+    line-height:1.02;letter-spacing:-.02em;color:var(--ink);
+    animation:rise .7s .06s ease both}
+  h1 em{font-style:italic;font-weight:500;color:var(--teal)}
+  .lede{
+    margin-top:20px;font-size:1.12rem;color:var(--ink-soft);max-width:60ch;
+    animation:rise .7s .12s ease both}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;animation:rise .7s .18s ease both}
+  .chip{
+    font-family:"IBM Plex Mono",monospace;font-size:.78rem;
+    background:var(--paper-2);border:1px solid var(--line);border-radius:999px;
+    padding:7px 14px;color:var(--ink);box-shadow:var(--shadow)}
+  .chip b{color:var(--teal-deep)}
+
+  /* ---- intro note ---- */
+  .note{
+    margin:34px 0 12px;background:var(--paper-2);border:1px solid var(--line);
+    border-left:5px solid var(--rust);border-radius:12px;padding:20px 22px;box-shadow:var(--shadow)}
+  .note b{color:var(--rust)}
+
+  /* ---- tiers ---- */
+  section.tier{margin-top:46px;animation:rise .6s ease both}
+  .tierhead{display:flex;align-items:baseline;gap:16px;border-bottom:1px solid var(--line);padding-bottom:12px}
+  .badge{
+    font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:.8rem;
+    background:var(--ink);color:var(--paper);border-radius:8px;
+    width:34px;height:34px;display:grid;place-items:center;flex:none;align-self:center}
+  .badge.opt{background:var(--paper-2);color:var(--ink);border:1.5px solid var(--ink)}
+  .tierhead h2{font-family:"Fraunces",serif;font-weight:600;font-size:1.55rem;letter-spacing:-.01em}
+  .tag{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:.7rem;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--teal-deep);align-self:center}
+  .tag.optional{color:var(--ink-soft)}
+  section.tier > p{margin-top:14px;color:var(--ink-soft)}
+
+  .skills{list-style:none;margin:18px 0 6px;display:grid;gap:10px}
+  .skills li{display:flex;gap:12px;align-items:flex-start}
+  .skills .dot{margin-top:.55em;width:7px;height:7px;border-radius:2px;background:var(--teal);flex:none;transform:rotate(45deg)}
+  .skills code{font-family:"IBM Plex Mono",monospace;background:#eee7d4;padding:1px 6px;border-radius:5px;font-size:.92em;color:var(--ink)}
+
+  /* ---- resource links ---- */
+  .res{display:grid;gap:12px;margin-top:22px}
+  a.card{
+    text-decoration:none;color:inherit;background:var(--paper-2);border:1px solid var(--line);
+    border-radius:12px;padding:16px 18px;display:flex;gap:14px;align-items:center;
+    box-shadow:var(--shadow);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+  a.card:hover{transform:translateY(-2px);border-color:var(--teal);box-shadow:0 22px 44px -26px rgba(20,38,59,.55)}
+  a.card .rk{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--paper);background:var(--teal);
+    border-radius:6px;padding:5px 8px;flex:none;letter-spacing:.04em}
+  a.card .rk.free{background:var(--teal)}
+  a.card h3{font-size:1.02rem;font-weight:600;margin-bottom:2px}
+  a.card p{font-size:.9rem;color:var(--ink-soft);margin:0}
+  a.card .arrow{margin-left:auto;color:var(--teal);font-family:"IBM Plex Mono",monospace;flex:none}
+
+  /* ---- quiz ---- */
+  .quiz{margin-top:26px;background:var(--paper-2);border:1px solid var(--line);border-radius:16px;
+    padding:24px 22px;box-shadow:var(--shadow)}
+  .quiz .qhead{font-family:"Fraunces",serif;font-size:1.2rem;font-weight:600;margin-bottom:4px}
+  .quiz .qsub{font-size:.9rem;color:var(--ink-soft);margin-bottom:20px}
+  .q{margin-bottom:20px;padding-bottom:18px;border-bottom:1px dashed var(--line)}
+  .q:last-of-type{border-bottom:none}
+  .q .prompt{font-weight:600;margin-bottom:10px}
+  .q .prompt .qn{font-family:"IBM Plex Mono",monospace;color:var(--teal-deep);margin-right:8px}
+  .q .prompt .mono{background:#eee7d4;padding:1px 6px;border-radius:5px}
+  .opts{display:grid;gap:8px}
+  .opt{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:9px;
+    padding:10px 13px;cursor:pointer;background:var(--paper);transition:border-color .15s,background .15s;font-size:.96rem}
+  .opt:hover{border-color:var(--teal)}
+  .opt input{accent-color:var(--teal);width:16px;height:16px;flex:none}
+  .opt.correct{border-color:var(--teal);background:rgba(29,111,106,.10)}
+  .opt.wrong{border-color:var(--rust);background:rgba(193,89,42,.08)}
+  .katex{font-size:1.04em}
+  .opt .mark{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:.8rem;display:none}
+  .opt.correct .mark{display:inline;color:var(--teal-deep)}
+  .opt.wrong .mark{display:inline;color:var(--rust)}
+  .btn{font-family:"IBM Plex Mono",monospace;font-size:.85rem;letter-spacing:.06em;
+    background:var(--ink);color:var(--paper);border:none;border-radius:10px;padding:13px 22px;
+    cursor:pointer;transition:background .15s,transform .1s;text-transform:uppercase}
+  .btn:hover{background:var(--teal-deep)}
+  .btn:active{transform:translateY(1px)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink);margin-left:10px}
+  .btn.ghost:hover{background:var(--paper);color:var(--ink)}
+  .result{margin-top:18px;border-radius:12px;padding:18px 20px;display:none;border:1px solid var(--line);background:var(--paper)}
+  .result.show{display:block;animation:rise .4s ease both}
+  .result .score{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:600}
+  .result .rec{margin-top:10px;font-size:.95rem}
+  .result .rec b{color:var(--teal-deep)}
+  .result ul{margin:10px 0 0 18px}
+  .result li{margin-bottom:4px}
+
+  /* ---- reflection ---- */
+  .reflect{margin-top:22px;background:linear-gradient(180deg,var(--paper-2),var(--paper));
+    border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
+  .reflect .prompt{font-family:"Fraunces",serif;font-size:1.25rem;font-weight:500;font-style:italic;color:var(--ink)}
+  .reflect .how{margin-top:14px;font-size:.92rem;color:var(--ink-soft)}
+  .editable{background:#fff6dd;border-bottom:1px dashed var(--rust);padding:0 4px}
+
+  /* ---- footer ---- */
+  footer{margin-top:56px;border-top:2px solid var(--ink);padding-top:26px}
+  footer h2{font-family:"Fraunces",serif;font-size:1.35rem;font-weight:600;margin-bottom:12px}
+  footer ul{list-style:none;display:grid;gap:8px}
+  footer li{display:flex;gap:10px}
+  footer li .dot{margin-top:.55em;width:7px;height:7px;border-radius:2px;background:var(--rust);flex:none;transform:rotate(45deg)}
+  .sig{margin-top:30px;font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--ink-soft);letter-spacing:.04em}
+
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @media (max-width:560px){
+    header{padding:46px 0 32px}
+    .tag{display:none}
+    a.card{flex-wrap:wrap}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="kicker">AP Physics 1 &middot; Summer Skills Intensive</span>
+    <h1>Summer<br>Pre&#8209;Work: <em>get your reasoning sharp</em></h1>
+    <p class="lede">Welcome! Before our four summer sessions, spend a little time waking up the math and thinking skills we'll lean on. You don't need to learn any physics yet &mdash; just get comfortable moving symbols around and reading relationships.</p>
+    <div class="meta">
+      <span class="chip"><b>Time:</b> about 1&ndash;2 hours total</span>
+      <span class="chip"><b>Due:</b> 8/18/2026</span>
+      <span class="chip"><b>Focus:</b> skills, not content</span>
+    </div>
+  </header>
+
+  <div class="note">
+    <p><b>Why no physics content?</b> Our summer sessions build the skills that make physics click: rearranging equations, reading graphs, designing experiments, and arguing from evidence. This pre-work simply makes sure your math toolkit is ready so day one feels smooth instead of rusty.</p>
+  </div>
+
+  <!-- TIER 1 -->
+  <section class="tier">
+    <div class="tierhead">
+      <span class="badge">1</span>
+      <h2>Math Readiness Tune&#8209;Up</h2>
+      <span class="tag">Required</span>
+    </div>
+    <p>Refresh these four skills. They show up constantly in physics, and being fluent with them is the single biggest predictor of a smooth start.</p>
+    <ul class="skills">
+      <li><span class="dot"></span><div>Rearranging and solving equations for any variable &mdash; e.g. solve \(v = v_0 + at\) for \(t\).</div></li>
+      <li><span class="dot"></span><div>Exponents, powers, and scientific notation &mdash; e.g. \((2^3)^2\) and \(0.00042 = 4.2\times10^{-4}\).</div></li>
+      <li><span class="dot"></span><div>Fractions and ratios without a calculator &mdash; adding, simplifying, and proportions.</div></li>
+      <li><span class="dot"></span><div>Right&#8209;triangle trigonometry &mdash; sine, cosine, tangent (SOH&#8209;CAH&#8209;TOA).</div></li>
+    </ul>
+
+    <!-- QUIZ -->
+    <div class="quiz" id="quiz">
+      <div class="qhead">Quick self&#8209;check</div>
+      <div class="qsub">Six questions, no grade. Your results will point you to exactly what (if anything) to brush up on below.</div>
+
+      <div class="q" data-area="algebra" data-correct="0">
+        <div class="prompt"><span class="qn">01</span>Solve \(v = v_0 + at\) for \(t\).</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q0">\(t = \dfrac{v - v_0}{a}\)<span class="mark"></span></label>
+          <label class="opt"><input type="radio" name="q0">\(t = v - v_0 - a\)<span class="mark"></span></label>
+          <label class="opt"><input type="radio" name="q0">\(t = a(v - v_0)\)<span class="mark"></span></label>
+          <label class="opt"><input type="radio" name="q0">\(t = \dfrac{v_0 - v}{a}\)<span class="mark"></span></label>
+        </div>
+      </div>
+
+      <div class="q" data-area="notation" data-correct="0">
+        <div class="prompt"><span class="qn">02</span>Write \(0.00042\) in scientific notation.</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q1">\(4.2 \times 10^{4}\)<span class="mark"></span></label>
+          <label class="opt"><input type="radio" name="q1">\(4.2 \times 10^{-4}\)<span class="mark"></span></label>
+          <label class="opt"><input type="radio" name="q1">\(42 \times 10^{-3}\)<span class="mark"></span></label>
+          <label class="opt"><input type="radio" name="q1">\(4.2 \times 10^{-3}\)<span class="mark"></span></label>
+        </div>
+      </div>
+
+      <div class="q" data-area="notation" data-correct="0">
+        <div class="prompt"><span class="qn">03</span>Evaluate \((2^3)^2\).</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q2">\(32\)<span class="mark"></span></label>
+          <label class="opt"><input type="radio" name="q2">\(12\)<span class="mark"></span></label>
+          <label class="opt"><input type="radio" name="q2">\(64\)<span class="mark"></span></label>
+          <label class="opt"><input type="radio" name="q2">\(256\)<span class="mark"></span></label>
+        </div>
+      </div>
+
+      <div class="q" data-area="fractions" data-correct="0">
+        <div class="prompt"><span class="qn">04</span>Compute \(\frac{1}{2} + \frac{1}{3}\).</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q3">\(\frac{2}{5}\)<span class="mark"></span></label>
+          <label class="opt"><input type="radio" name="q3">\(\frac{1}{6}\)<span class="mark"></span></label>
+          <label class="opt"><input type="radio" name="q3">\(\frac{3}{5}\)<span class="mark"></span></label>
+          <label class="opt"><input type="radio" name="q3">\(\frac{5}{6}\)<span class="mark"></span></label>
+        </div>
+      </div>
+
+      <div class="q" data-area="trig" data-correct="0">
+        <div class="prompt"><span class="qn">05</span>In a right triangle, \(\sin\theta\) equals&hellip;</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q4">\(\dfrac{\text{adjacent}}{\text{hypotenuse}}\)<span class="mark"></span></label>
+          <label class="opt"><input type="radio" name="q4">\(\dfrac{\text{opposite}}{\text{hypotenuse}}\)<span class="mark"></span></label>
+          <label class="opt"><input type="radio" name="q4">\(\dfrac{\text{opposite}}{\text{adjacent}}\)<span class="mark"></span></label>
+          <label class="opt"><input type="radio" name="q4">\(\dfrac{\text{hypotenuse}}{\text{opposite}}\)<span class="mark"></span></label>
+        </div>
+      </div>
+
+      <div class="q" data-area="algebra" data-correct="0">
+        <div class="prompt"><span class="qn">06</span>Solve \(A = \tfrac{1}{2}bh\) for \(h\).</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q5">\(h = \dfrac{A}{2b}\)<span class="mark"></span></label>
+          <label class="opt"><input type="radio" name="q5">\(h = 2Ab\)<span class="mark"></span></label>
+          <label class="opt"><input type="radio" name="q5">\(h = \dfrac{2A}{b}\)<span class="mark"></span></label>
+          <label class="opt"><input type="radio" name="q5">\(h = \dfrac{b}{2A}\)<span class="mark"></span></label>
+        </div>
+      </div>
+
+      <button class="btn" id="check">Check my answers</button>
+      <button class="btn ghost" id="reset">Reset</button>
+
+      <div class="result" id="result"></div>
+    </div>
+
+    <p style="margin-top:26px">Use these free resources to brush up &mdash; the self&#8209;check above tells you which ones to prioritize:</p>
+    <div class="res">
+      <a class="card" href="https://www.khanacademy.org/math/algebra" target="_blank" rel="noopener">
+        <span class="rk free">FREE</span>
+        <div><h3>Khan Academy &mdash; Algebra &amp; Trigonometry</h3><p>Solving and rearranging equations, exponents, and right-triangle trig. Khan is the College Board's official AP practice partner.</p></div>
+        <span class="arrow">&rarr;</span>
+      </a>
+      <a class="card" href="https://www.physicsclassroom.com/morehelp/graphs" target="_blank" rel="noopener">
+        <span class="rk free">FREE</span>
+        <div><h3>The Physics Classroom &mdash; Calc Pad &amp; Graphing</h3><p>Teacher-built practice with equations and graph reading. Great low-pressure drills.</p></div>
+        <span class="arrow">&rarr;</span>
+      </a>
+      <a class="card" href="https://www.aplusphysics.com/courses/honors/intro/math_review.html" target="_blank" rel="noopener">
+        <span class="rk free">FREE</span>
+        <div><h3>APlusPhysics &mdash; Math Review</h3><p>One clean page on SI units, scientific notation, and accuracy vs. precision.</p></div>
+        <span class="arrow">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- TIER 2 -->
+  <section class="tier">
+    <div class="tierhead">
+      <span class="badge opt">2</span>
+      <h2>Warm&#8209;Up Videos</h2>
+      <span class="tag optional">Optional</span>
+    </div>
+    <p>If you want a feel for the kind of thinking ahead, watch a couple of short, friendly videos on units, measurement, and graphing. Skip the heavy content topics for now &mdash; we'll get there together.</p>
+    <div class="res">
+      <a class="card" href="https://www.flippingphysics.com/" target="_blank" rel="noopener">
+        <span class="rk free">FREE</span>
+        <div><h3>Flipping Physics</h3><p>Short, genuinely fun videos with Mr. P. Start with anything on units, measurement, or graphing.</p></div>
+        <span class="arrow">&rarr;</span>
+      </a>
+      <a class="card" href="https://www.khanacademy.org/science/ap-college-physics-1" target="_blank" rel="noopener">
+        <span class="rk free">FREE</span>
+        <div><h3>Khan Academy &mdash; AP Physics 1 hub</h3><p>Browse the intro material for a preview. No need to complete units &mdash; just get oriented.</p></div>
+        <span class="arrow">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- TIER 3 -->
+  <section class="tier">
+    <div class="tierhead">
+      <span class="badge">3</span>
+      <h2>One&#8209;Paragraph Reflection</h2>
+      <span class="tag">Required</span>
+    </div>
+    <p>This is your ticket in the door. It's not graded for content &mdash; it just helps me get to know you and tailor day one.</p>
+    <div class="reflect">
+      <p class="prompt">&ldquo;Where do you feel strongest and weakest in math right now, and what made you decide to take this course?&rdquo;</p>
+      <p class="how">Submit here: <a href="mailto:bcallow@lindenwold.k12.nj.us" style="color:var(--teal-deep);font-weight:600">bcallow@lindenwold.k12.nj.us</a>. A few honest sentences is all I'm looking for.</p>
+    </div>
+  </section>
+
+  <footer>
+    <h2>Bring to Session 1</h2>
+    <ul>
+      <li><span class="dot"></span><div>A pencil and something to write on &mdash; we work problems by hand on whiteboards.</div></li>
+      <li><span class="dot"></span><div>A scientific calculator (your phone is fine in a pinch).</div></li>
+      <li><span class="dot"></span><div>Your completed reflection and a willingness to make mistakes out loud.</div></li>
+    </ul>
+    <p class="sig">AP Physics 1 &middot; Summer Skills Intensive &mdash; reasoning first, content next.</p>
+  </footer>
+
+</div>
+
+<script>
+  (function(){
+    var ANSWERS = [0,1,2,3,1,2]; // correct option index for q0..q5
+    var AREA_LABELS = {
+      algebra: { name: "Rearranging equations", link: "https://www.khanacademy.org/math/algebra" },
+      notation: { name: "Exponents & scientific notation", link: "https://www.aplusphysics.com/courses/honors/intro/math_review.html" },
+      fractions: { name: "Fractions & ratios", link: "https://www.khanacademy.org/math/arithmetic" },
+      trig: { name: "Right-triangle trig", link: "https://www.khanacademy.org/math/trigonometry" }
+    };
+    var qs = Array.prototype.slice.call(document.querySelectorAll('.q'));
+    var resultEl = document.getElementById('result');
+
+    document.getElementById('check').addEventListener('click', function(){
+      var score = 0, missed = {};
+      var unanswered = false;
+      qs.forEach(function(q, i){
+        var opts = q.querySelectorAll('.opt');
+        var picked = -1;
+        opts.forEach(function(o, j){
+          o.classList.remove('correct','wrong');
+          o.querySelector('.mark').textContent = '';
+          if(o.querySelector('input').checked) picked = j;
+        });
+        if(picked === -1){ unanswered = true; }
+        var correct = ANSWERS[i];
+        opts[correct].classList.add('correct');
+        opts[correct].querySelector('.mark').textContent = 'correct';
+        if(picked === correct){
+          score++;
+        } else if(picked !== -1){
+          opts[picked].classList.add('wrong');
+          opts[picked].querySelector('.mark').textContent = 'your pick';
+          var area = q.getAttribute('data-area');
+          missed[area] = true;
+        } else {
+          var area2 = q.getAttribute('data-area');
+          missed[area2] = true;
+        }
+      });
+
+      var html = '<div class="score">' + score + ' / 6 correct</div>';
+      var missedKeys = Object.keys(missed);
+      if(unanswered){
+        html += '<p class="rec" style="margin-top:6px">Heads up: answer every question for the most useful guidance.</p>';
+      }
+      if(missedKeys.length === 0 && !unanswered){
+        html += '<p class="rec"><b>You\'re in great shape.</b> Your math toolkit is ready &mdash; skim the warm-up videos if you like and bring that confidence to Session 1.</p>';
+      } else if(missedKeys.length){
+        html += '<p class="rec"><b>Focus your brush-up here:</b></p><ul>';
+        missedKeys.forEach(function(k){
+          var a = AREA_LABELS[k];
+          html += '<li>' + a.name + ' &mdash; <a href="' + a.link + '" target="_blank" rel="noopener" style="color:var(--teal-deep);font-weight:600">practice &rarr;</a></li>';
+        });
+        html += '</ul>';
+      }
+      resultEl.innerHTML = html;
+      resultEl.classList.add('show');
+      resultEl.scrollIntoView({behavior:'smooth', block:'nearest'});
+    });
+
+    document.getElementById('reset').addEventListener('click', function(){
+      qs.forEach(function(q){
+        q.querySelectorAll('.opt').forEach(function(o){
+          o.classList.remove('correct','wrong');
+          o.querySelector('.mark').textContent = '';
+          o.querySelector('input').checked = false;
+        });
+      });
+      resultEl.classList.remove('show');
+      resultEl.innerHTML = '';
+      document.getElementById('quiz').scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  })();
+</script>
+<script>
+  (function(){
+    function render(){
+      if (window.renderMathInElement){
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "\\(", right: "\\)", display: false},
+            {left: "$$", right: "$$", display: true}
+          ],
+          throwOnError: false
+        });
+        return true;
+      }
+      return false;
+    }
+    var tries = 0;
+    function attempt(){ if (render() || tries++ > 60) return; setTimeout(attempt, 100); }
+    if (document.readyState === "complete") attempt();
+    else window.addEventListener("load", attempt);
+  })();
+</script>
+</body>
+</html>
